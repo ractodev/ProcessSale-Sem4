@@ -1,0 +1,6 @@
+22 May 2023, 22:35:42, Exception was thrown: ERROR: Database could not be reached
+se.kth.iv1350.integration.DatabaseFailureException: ERROR: Database could not be reached
+	at se.kth.iv1350.integration.ExternalInventorySystem.fetchItemInformation(ExternalInventorySystem.java:50)
+	at se.kth.iv1350.controller.Controller.enterIdentifier(Controller.java:52)
+	at se.kth.iv1350.view.View.start(View.java:57)
+	at se.kth.iv1350.startup.Main.main(Main.java:31)
