@@ -3,7 +3,6 @@ package se.kth.iv1350.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import se.kth.iv1350.integration.DatabaseFailureException;
 import se.kth.iv1350.integration.ExternalSystemHandler;
 import se.kth.iv1350.integration.IdentifierNotFoundException;
@@ -22,7 +21,6 @@ public class Controller {
 	private CashRegister cashRegister;
 	private Printer printer;
 	private Sale saleInformation;
-	
 	private List<SaleObserver> saleObservers = new ArrayList<>();
 
 	/**
@@ -43,14 +41,16 @@ public class Controller {
 	}
 
 	/**
-	 * Looks up an item in the external inventory system based on its ID and adds it
-	 * to the current sale if the ID is found in the database.
-	 * 
-	 * @param itemId the ID of the item to look up
-	 */
+ 	 * Looks up an item in the external inventory system based on its ID and adds it
+ 	 * to the current sale if the ID is found in the database.
+ 	 *
+ 	 * @param itemID the ID of the item to look up
+ 	 * @throws DatabaseFailureException if the connection to the external inventory system fails
+ 	 * @throws IdentifierNotFoundException if the given item ID is not found in the external inventory system
+ 	 */
 	public void enterIdentifier(Identifier itemID) throws DatabaseFailureException, IdentifierNotFoundException {
-			Item foundItem = extSysHan.getExternalInventorySystem().fetchItemInformation(itemID);
-			saleInformation.addItem(foundItem);
+    	    Item foundItem = extSysHan.getExternalInventorySystem().fetchItemInformation(itemID);
+    	    saleInformation.addItem(foundItem);
 	}
 
 	/**
@@ -132,5 +132,3 @@ public class Controller {
 		return saleInformation.getCart();
 	}
 }
-
-
